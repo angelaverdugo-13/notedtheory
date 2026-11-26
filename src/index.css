@@ -1,0 +1,1991 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: "Geologica:Bold";
+  src: url("https://static.figma.com/font/Geologica_CRSV_SHRP_slnt_wght__1") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Geologica:Light";
+  src: url("https://static.figma.com/font/Geologica_CRSV_SHRP_slnt_wght__1") format("woff2");
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Geologica:Medium";
+  src: url("https://static.figma.com/font/Geologica_CRSV_SHRP_slnt_wght__1") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Geologica:Regular";
+  src: url("https://static.figma.com/font/Geologica_CRSV_SHRP_slnt_wght__1") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Geologica:SemiBold";
+  src: url("https://static.figma.com/font/Geologica_CRSV_SHRP_slnt_wght__1") format("woff2");
+  font-style: normal;
+  font-weight: 600;
+}
+
+:root {
+  --ink: #111111;
+  --body: #222222;
+  --muted: #6b6b6b;
+  --muted-light: #8a8a8a;
+  --line: #e2e2e2;
+  --navy: #0b0829;
+  --orange: #ff8400;
+  --blue: #92bcf2;
+  --peach: #f9dfc6;
+  --page-x: 48px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 320px;
+    color: var(--ink);
+    background: white;
+    font-family: "Geologica:Regular", sans-serif;
+    font-variation-settings: "CRSV" 0, "SHRP" 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  summary {
+    cursor: pointer;
+  }
+}
+
+.site-header {
+  display: flex;
+  height: 72px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--page-x);
+  border-bottom: 1px solid var(--line);
+  background: white;
+}
+
+.contact-page .contact-header-instance {
+  padding: 0 30px;
+}
+
+.brand {
+  font-family: "Geologica:Bold", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.contact-page .contact-brand-instance {
+  padding: 0;
+  font-size: 15px;
+}
+
+.desktop-nav,
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.desktop-nav {
+  gap: 40px;
+  margin-left: 70px;
+}
+
+.header-actions {
+  gap: 24px;
+}
+
+.text-link {
+  position: relative;
+  display: inline-block;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.text-link::after {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.text-link.active {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.header-actions .text-link {
+  color: var(--ink);
+}
+
+.language {
+  color: var(--muted-light);
+  font-size: 14px;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  overflow: hidden;
+  padding: 64px var(--page-x);
+}
+
+.hero h1 {
+  display: flex;
+  width: min(64vw, 880px);
+  flex-direction: column;
+  flex: 0 0 auto;
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: clamp(96px, 13.62vw, 196px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.82;
+  white-space: nowrap;
+}
+
+.hero p {
+  width: min(31vw, 438px);
+  margin-bottom: 4px;
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.studio-section {
+  padding: 64px var(--page-x);
+  border-top: 1px solid var(--line);
+}
+
+.studio-section > h2 {
+  margin-bottom: 32px;
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.project-visual {
+  display: flex;
+  width: 100%;
+  height: 465px;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+  overflow: hidden;
+  padding: 24px;
+  background: #d9d9d9;
+}
+
+.project-visual img {
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: cover;
+}
+
+.project-visual h3 {
+  flex: 0 0 auto;
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.caption {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.project-link {
+  color: var(--ink);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.featured-project {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 64px var(--page-x);
+}
+
+.featured-project > h2 {
+  width: 524px;
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 88px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.featured-description {
+  width: min(100%, 584px);
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.featured-project > .text-link {
+  color: var(--ink);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.featured-project > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1344 / 589;
+  object-fit: cover;
+}
+
+.all-projects {
+  display: flex;
+  justify-content: center;
+  padding: 64px var(--page-x);
+}
+
+.pill-button {
+  padding: 8px 16px;
+  border: 0.5px solid var(--ink);
+  border-radius: 999px;
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+  transition:
+    color 300ms cubic-bezier(0.42, 0, 0.58, 1),
+    background 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.pill-button:hover,
+.pill-button:focus-visible {
+  color: white;
+  background: var(--ink);
+}
+
+.split-section {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  padding-right: var(--page-x);
+  padding-left: var(--page-x);
+  border-top: 1px solid var(--line);
+}
+
+.about-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.about-section > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.about-section h2 {
+  max-width: 880px;
+  color: var(--body);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.about-section .text-link {
+  color: var(--ink);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.positions-section {
+  padding-top: 64px;
+  padding-bottom: 80px;
+}
+
+.position-list {
+  width: 100%;
+}
+
+.position-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 17px;
+  align-items: center;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.position-row span:nth-child(2) {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.position-row span:last-child {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 18px;
+  transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.position-row:hover span:last-child {
+  transform: translate(3px, -3px);
+}
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 56px var(--page-x) 40px;
+  border-top: 1px solid var(--ink);
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.footer-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-cta > a {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.footer-links {
+  display: flex;
+  gap: clamp(36px, 6.7vw, 96px);
+}
+
+.footer-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.footer-group h3 {
+  color: var(--ink);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.footer-group .text-link {
+  font-size: 13px;
+}
+
+.footer-wordmark {
+  overflow: hidden;
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: clamp(96px, 12.15vw, 175px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.82;
+  white-space: nowrap;
+}
+
+.footer-wordmark span {
+  font-size: 0.86em;
+}
+
+.footer-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.footer-meta p:nth-child(3),
+.footer-meta a:last-child {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.contact-header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 64px var(--page-x) 56px;
+}
+
+.contact-header h1 {
+  width: min(100%, 1200px);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: clamp(64px, 6.67vw, 96px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: minmax(0, 784px) minmax(300px, 424px);
+  justify-content: space-between;
+  gap: 64px;
+  padding: 96px var(--page-x);
+  border-top: 1px solid var(--line);
+}
+
+.contact-form {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.contact-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.contact-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-field > span,
+.service-selector legend {
+  color: var(--ink);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  padding: 18px 0 12px;
+  border: 0;
+  border-bottom: 1px solid var(--ink);
+  border-radius: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: var(--muted-light);
+  opacity: 1;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-bottom-width: 2px;
+}
+
+.contact-message textarea {
+  height: 140px;
+  resize: vertical;
+}
+
+.service-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border: 0;
+}
+
+.service-selector > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.service-selector > .contact-service-options {
+  padding: 20px 0;
+}
+
+.service-selector label {
+  position: relative;
+  cursor: pointer;
+}
+
+.service-selector input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.service-selector label span {
+  display: block;
+  padding: 8px 16px;
+  border: 0.5px solid var(--ink);
+  border-radius: 999px;
+  font-family: "Geologica:Light", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1;
+  transition:
+    color 300ms cubic-bezier(0.42, 0, 0.58, 1),
+    background 300ms cubic-bezier(0.42, 0, 0.58, 1),
+    transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.service-selector label:hover span {
+  transform: scale(1.02);
+}
+
+.service-selector input:checked + span,
+.service-selector input:focus-visible + span {
+  color: white;
+  background: var(--ink);
+}
+
+.contact-submit-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.contact-submit-row button {
+  padding: 18px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: white;
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+  transition:
+    color 300ms cubic-bezier(0.42, 0, 0.58, 1),
+    background 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.contact-submit-row button:hover,
+.contact-submit-row button:focus-visible {
+  color: var(--ink);
+  outline: 1px solid var(--ink);
+  background: white;
+}
+
+.contact-submit-row p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.contact-submit-row .contact-status-error {
+  color: #a52828;
+}
+
+.contact-submit-row button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.netlify-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.contact-details > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink);
+}
+
+.contact-details p {
+  color: var(--muted-light);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.contact-details a,
+.contact-details strong {
+  color: var(--ink);
+  font-family: "Geologica:Medium", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.contact-details a {
+  position: relative;
+}
+
+.contact-details a::after {
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.contact-details a:hover::after,
+.contact-details a:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.jobs-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 64px var(--page-x);
+}
+
+.jobs-hero > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.jobs-hero h1 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: clamp(64px, 6.67vw, 96px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.jobs-hero > p {
+  width: min(100%, 364px);
+  color: #4a4a4a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.jobs-list {
+  padding: 24px var(--page-x);
+}
+
+.jobs-table-header,
+.job-row {
+  display: grid;
+  grid-template-columns: minmax(320px, 2.8fr) minmax(130px, 1fr) minmax(150px, 1fr) minmax(90px, 1.1fr);
+  gap: 24px;
+}
+
+.jobs-table-header {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ink);
+  color: var(--muted-light);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.job-row {
+  align-items: center;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.job-row > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.job-row h2 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.job-row p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.job-row .text-link {
+  justify-self: end;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.studio-culture {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 24px;
+  padding: 80px var(--page-x);
+}
+
+.studio-culture > img {
+  width: 100%;
+  aspect-ratio: 880 / 587;
+  object-fit: cover;
+}
+
+.culture-benefits {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 28px;
+}
+
+.culture-benefits > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid var(--ink);
+}
+
+.culture-benefits h2 {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.culture-benefits p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.portfolio-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 64px var(--page-x) 80px;
+  border-top: 1px solid var(--line);
+}
+
+.portfolio-cta h2 {
+  width: min(100%, 760px);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.portfolio-cta .text-link {
+  flex: 0 0 auto;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.studio-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 64px var(--page-x);
+}
+
+.studio-intro > div {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.studio-intro h1 {
+  width: min(66vw, 900px);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: clamp(64px, 6.67vw, 96px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+}
+
+.studio-intro-copy {
+  display: flex;
+  width: min(31vw, 420px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.studio-intro-copy > p {
+  color: #4a4a4a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.studio-intro-copy .text-link {
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.founders-section {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  padding: 56px var(--page-x) 80px;
+  border-top: 1px solid var(--line);
+}
+
+.founder-profile {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.founder-profile + .founder-profile {
+  padding-left: 24px;
+  border-left: 1px solid var(--line);
+}
+
+.founder-bio {
+  display: flex;
+  width: min(100%, 309px);
+  min-height: 180px;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.founder-bio > p:first-child {
+  color: var(--muted-light);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.founder-bio h2 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.founder-bio > p:last-child {
+  color: #4a4a4a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.founder-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+}
+
+.founder-gallery img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.founder-social {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--ink);
+}
+
+.founder-social .text-link {
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.founder-social > span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.studio-process {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  padding: 64px var(--page-x) 80px;
+  border-top: 1px solid var(--line);
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.process-steps > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.process-steps h2 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.process-steps p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.work-header {
+  padding: 64px var(--page-x);
+}
+
+.work-header h1 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: clamp(96px, 11.12vw, 160px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+}
+
+.work-feature {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-right: var(--page-x);
+  padding-left: var(--page-x);
+  border-top: 1px solid var(--line);
+}
+
+.work-nebula {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.work-veggie {
+  padding-top: 28px;
+  padding-bottom: 80px;
+}
+
+.work-feature-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.work-feature-title > p {
+  color: var(--muted-light);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.work-feature-title h2 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.nebula-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px;
+}
+
+.nebula-gallery img {
+  width: 100%;
+  aspect-ratio: 412 / 630;
+  object-fit: cover;
+}
+
+.work-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.work-details > div {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.work-details > div > p:first-child {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.work-details > div > p:last-child {
+  color: #4a4a4a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.veggie-hero-gallery {
+  display: grid;
+  aspect-ratio: 1344 / 578;
+  grid-template-columns: 1.914fr 1fr;
+  gap: 24px;
+}
+
+.veggie-hero-gallery img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+}
+
+.veggie-hero-gallery img:last-child {
+  object-position: center 34%;
+}
+
+.veggie-pieces {
+  display: grid;
+  aspect-ratio: 1344 / 378;
+  grid-template-columns: 1fr 1.504fr 1fr;
+  gap: 23px;
+}
+
+.veggie-pieces img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+}
+
+.work-project-list {
+  padding: 80px var(--page-x);
+}
+
+.work-project-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 17px;
+  align-items: center;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.work-project-row:first-child {
+  border-top: 1px solid var(--ink);
+}
+
+.work-project-row h3 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.work-project-row p {
+  justify-self: center;
+  color: var(--muted-light);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.work-project-row span {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 18px;
+  transition: transform 300ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.work-project-row:hover span,
+.work-project-row:focus-visible span {
+  transform: translate(3px, -3px);
+}
+
+.work-about {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  padding: 80px var(--page-x);
+  border-top: 1px solid var(--line);
+}
+
+.work-about > div {
+  display: flex;
+  max-width: 880px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.work-about > div > p {
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.work-about .text-link {
+  color: var(--ink);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.case-header {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow: hidden;
+  padding: 40px var(--page-x) 48px;
+}
+
+.case-breadcrumb {
+  display: flex;
+  gap: 4px;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.case-breadcrumb a {
+  color: var(--muted);
+}
+
+.case-header > h1 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: clamp(96px, 11.12vw, 160px);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.case-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.case-facts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.case-facts dt {
+  color: var(--muted-light);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.case-facts dd {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.case-hero-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px var(--page-x);
+}
+
+.case-hero-gallery img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.case-narrative {
+  padding: 80px var(--page-x);
+}
+
+.narrative-panel {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  padding: 40px;
+  border: 1px solid #cfcfcf;
+  border-radius: 16px;
+  background: #f5f5f5;
+}
+
+.narrative-panel article {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.narrative-panel header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.narrative-panel h2 {
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.narrative-panel header span {
+  color: var(--muted-light);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.narrative-panel article > p {
+  color: #4a4a4a;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.case-process-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 80px var(--page-x);
+}
+
+.process-images {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.process-images img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.case-outcome {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  padding-top: 32px;
+}
+
+.case-outcome blockquote {
+  color: var(--body);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.96;
+}
+
+.next-project {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+  padding: 48px var(--page-x) 64px;
+  border-top: 1px solid var(--line);
+}
+
+.next-project > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.next-project .text-link {
+  color: var(--ink);
+  font-family: "Geologica:SemiBold", sans-serif;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.next-project > a:last-child {
+  width: 332px;
+  flex: 0 0 332px;
+}
+
+.next-project img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+@media (max-width: 1050px) {
+  :root {
+    --page-x: 28px;
+  }
+
+  .desktop-nav {
+    gap: 24px;
+    margin-left: 0;
+  }
+
+  .hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    width: 100%;
+    font-size: clamp(80px, 13.5vw, 142px);
+  }
+
+  .hero p {
+    width: min(100%, 520px);
+  }
+
+  .project-visual {
+    height: auto;
+    aspect-ratio: 0.92;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-links {
+    justify-content: space-between;
+  }
+
+  .narrative-panel {
+    gap: 24px;
+    padding: 28px;
+  }
+
+  .next-project .text-link {
+    font-size: 44px;
+  }
+
+  .next-project > a:last-child {
+    width: 260px;
+    flex-basis: 260px;
+  }
+
+  .nebula-gallery {
+    gap: 20px;
+  }
+
+  .founder-gallery {
+    gap: 20px;
+  }
+
+  .jobs-table-header,
+  .job-row {
+    grid-template-columns: minmax(280px, 2fr) minmax(110px, 0.8fr) minmax(130px, 0.9fr) minmax(80px, 0.7fr);
+    gap: 18px;
+  }
+
+  .contact-content {
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+    gap: 48px;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --page-x: 18px;
+  }
+
+  .site-header {
+    height: 64px;
+  }
+
+  .desktop-nav,
+  .header-actions {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: relative;
+    display: block;
+  }
+
+  .mobile-menu summary {
+    list-style: none;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu nav {
+    position: absolute;
+    z-index: 10;
+    top: 34px;
+    right: -18px;
+    display: flex;
+    width: min(100vw, 280px);
+    flex-direction: column;
+    padding: 18px;
+    border-bottom: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+    background: white;
+  }
+
+  .mobile-menu nav a {
+    padding: 10px 0;
+    font-size: 16px;
+  }
+
+  .hero {
+    gap: 36px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .hero h1 {
+    font-size: clamp(54px, 18.4vw, 108px);
+    letter-spacing: -0.065em;
+  }
+
+  .hero p {
+    font-size: 24px;
+  }
+
+  .studio-section,
+  .featured-project,
+  .all-projects {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .studio-section > h2 {
+    font-size: 42px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .project-visual {
+    height: auto;
+    aspect-ratio: 1 / 1.08;
+  }
+
+  .featured-project > h2 {
+    width: 100%;
+    font-size: 64px;
+  }
+
+  .featured-project > img {
+    aspect-ratio: 1 / 0.86;
+  }
+
+  .split-section {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .about-section,
+  .positions-section {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .about-section h2 {
+    font-size: 26px;
+  }
+
+  .position-row {
+    grid-template-columns: 1fr 20px;
+    gap: 8px 16px;
+  }
+
+  .position-row span:nth-child(2) {
+    grid-row: 2;
+  }
+
+  .position-row span:last-child {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+  }
+
+  .site-footer {
+    padding-top: 48px;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .footer-wordmark {
+    font-size: 15.2vw;
+  }
+
+  .footer-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .case-header {
+    gap: 24px;
+    padding-top: 32px;
+    padding-bottom: 36px;
+  }
+
+  .case-header > h1 {
+    font-size: clamp(64px, 20vw, 112px);
+  }
+
+  .case-facts {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 16px;
+  }
+
+  .case-hero-gallery {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .case-hero-gallery img {
+    min-height: 0;
+  }
+
+  .case-narrative,
+  .case-process-gallery {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .narrative-panel {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .process-images {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .case-outcome {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .case-outcome blockquote {
+    font-size: 26px;
+  }
+
+  .next-project {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .next-project .text-link {
+    font-size: clamp(36px, 10vw, 56px);
+    white-space: normal;
+  }
+
+  .next-project > a:last-child {
+    width: min(100%, 332px);
+    flex-basis: auto;
+  }
+
+  .work-header {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .work-header h1 {
+    font-size: clamp(72px, 24vw, 112px);
+  }
+
+  .work-nebula,
+  .work-veggie {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .work-feature-title h2 {
+    font-size: 42px;
+  }
+
+  .nebula-gallery {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .work-details {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .veggie-hero-gallery {
+    aspect-ratio: auto;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .veggie-hero-gallery img:first-child {
+    aspect-ratio: 867 / 578;
+  }
+
+  .veggie-hero-gallery img:last-child {
+    aspect-ratio: 453 / 578;
+  }
+
+  .veggie-pieces {
+    aspect-ratio: auto;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .veggie-pieces img {
+    height: auto;
+  }
+
+  .veggie-pieces img:nth-child(1),
+  .veggie-pieces img:nth-child(3) {
+    aspect-ratio: 1;
+  }
+
+  .veggie-pieces img:nth-child(2) {
+    aspect-ratio: 567 / 378;
+  }
+
+  .work-project-list {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .work-project-row {
+    grid-template-columns: 1fr 20px;
+    gap: 8px 16px;
+    padding: 24px 0;
+  }
+
+  .work-project-row p {
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  .work-project-row span {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+  }
+
+  .work-about {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .studio-intro {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .studio-intro > div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .studio-intro h1,
+  .studio-intro-copy {
+    width: 100%;
+  }
+
+  .studio-intro h1 {
+    font-size: clamp(54px, 14vw, 80px);
+  }
+
+  .founders-section {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .founder-profile + .founder-profile {
+    padding-top: 48px;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .founder-bio {
+    min-height: 0;
+  }
+
+  .studio-process {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .jobs-hero {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .jobs-hero h1 {
+    font-size: clamp(54px, 15vw, 80px);
+    white-space: normal;
+  }
+
+  .jobs-table-header {
+    display: none;
+  }
+
+  .job-row {
+    grid-template-columns: 1fr auto;
+    gap: 18px 24px;
+    padding: 28px 0;
+  }
+
+  .job-row > div {
+    grid-column: 1 / -1;
+  }
+
+  .job-row > p {
+    align-self: start;
+  }
+
+  .job-row .text-link {
+    grid-row: 2 / span 2;
+    grid-column: 2;
+    align-self: center;
+  }
+
+  .studio-culture {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .portfolio-cta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .portfolio-cta h2 {
+    font-size: 42px;
+  }
+
+  .contact-header {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .contact-header h1 {
+    font-size: clamp(54px, 14vw, 80px);
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 64px;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .contact-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    font-size: 13px;
+  }
+
+  .hero h1 {
+    font-size: 17.7vw;
+  }
+
+  .project-visual {
+    padding: 18px;
+  }
+
+  .footer-links,
+  .footer-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-gallery {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .job-row h2 {
+    font-size: 24px;
+  }
+
+  .job-row {
+    grid-template-columns: 1fr;
+  }
+
+  .job-row .text-link {
+    grid-row: auto;
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .portfolio-cta h2 {
+    font-size: 36px;
+  }
+
+  .contact-field-row,
+  .contact-details {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-submit-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .contact-details a,
+  .contact-details strong {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

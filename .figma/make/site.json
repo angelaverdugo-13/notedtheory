@@ -1,0 +1,10 @@
+{
+  "description": "Explore Noted Theory Studio’s creative portfolio, services, and designers, and connect with Ángela and Ximena for branding, art direction, and digital design.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
