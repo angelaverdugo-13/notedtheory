@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const assets = {
   nebula: "/assets/d129d.webp",
@@ -30,6 +30,50 @@ const assets = {
   ximenaStudioTwo: "/assets/6b97f.webp",
   studioWorkspace: "/assets/cc444.webp",
 };
+
+const defaultDescription =
+  "Noted Theory is an independent creative studio focused on branding, art direction, photography, packaging, and digital design.";
+
+const pageMetadata: Record<string, { title: string; description: string }> = {
+  "/": {
+    title: "Home — Noted Theory",
+    description: defaultDescription,
+  },
+  "/work": {
+    title: "Work — Noted Theory",
+    description:
+      "Explore selected branding, art direction, photography, packaging, and digital design projects by Noted Theory.",
+  },
+  "/studio": {
+    title: "Studio — Noted Theory",
+    description:
+      "Meet Ángela and Ximena and discover Noted Theory’s approach to identity design, photography, packaging, and art direction.",
+  },
+  "/open-positions": {
+    title: "Open Positions — Noted Theory",
+    description:
+      "Explore open roles and internship opportunities at Noted Theory, an independent creative studio in Monterrey.",
+  },
+  "/contact": {
+    title: "Contact — Noted Theory",
+    description:
+      "Start a project with Noted Theory. Get in touch about identity design, photography, packaging, art direction, and digital design.",
+  },
+  "/projects/ok-sock": {
+    title: "OK sock — Noted Theory",
+    description:
+      "Explore OK sock, an identity design and photography case study by Noted Theory.",
+  },
+  "/projects/velour-sombre": {
+    title: "Velour Sombre — Noted Theory",
+    description:
+      "Explore Velour Sombre, a packaging, identity design, and photography case study by Noted Theory.",
+  },
+};
+
+function setMetaContent(selector: string, content: string) {
+  document.querySelector<HTMLMetaElement>(selector)?.setAttribute("content", content);
+}
 
 type TextLinkProps = {
   children: React.ReactNode;
@@ -1038,6 +1082,18 @@ function ContactPage() {
 
 export default function App() {
   const path = window.location.pathname.replace(/\/+$/, "") || "/";
+  const metadata = pageMetadata[path] ?? pageMetadata["/"];
+
+  useEffect(() => {
+    document.title = metadata.title;
+    setMetaContent('meta[name="description"]', metadata.description);
+    setMetaContent('meta[property="og:title"]', metadata.title);
+    setMetaContent('meta[property="og:description"]', metadata.description);
+    setMetaContent(
+      'meta[property="og:url"]',
+      path === "/" ? "https://notedtheory.com" : `https://notedtheory.com${path}`,
+    );
+  }, [metadata, path]);
 
   if (path === "/contact") {
     return <ContactPage />;

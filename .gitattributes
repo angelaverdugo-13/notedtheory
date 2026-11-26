@@ -147,3 +147,5 @@
 
 # Netlify must receive these site images as regular Git blobs.
 /public/assets/**     -filter -diff -merge -text
+/public/favicon.png   -filter -diff -merge -text
+/public/og-image.png  -filter -diff -merge -text
